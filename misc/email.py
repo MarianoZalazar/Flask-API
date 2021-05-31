@@ -28,6 +28,6 @@ def send_mail_confirmation(user):
         sender="noreply@demo.com",
         recipients=[user.email],
     )
-    url = url_for('app.confirm_email', token=token_confirm, _external=True)
+    url = url_for('confirm_email', token=token_confirm, _external=True)
     msg.html = render_template("mail_confirm.html", confirm_url=url)
     mail.send(msg)

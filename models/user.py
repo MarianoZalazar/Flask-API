@@ -1,4 +1,4 @@
-from models import Product
+from models.product import Product
 from misc import pswd_manager
 from misc import email
 import datetime
