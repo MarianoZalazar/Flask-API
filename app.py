@@ -13,18 +13,6 @@ from models.user import User
 
 from messages.error_messages import error_message_helper
 
-
-#200 Ok Get
-#201 Created Post
-#204 No Content Put/Delete
-#404 Not Found
-#400 Bad Request
-
-#app.config["JWT_SECRET_KEY"] = "super-secret"
-#app.config["SECRET_KEY"] = "ultra-secret"
-#app.config["SECURITY_PASSWORD_SALT"] = "mega-secret"
-#app.config["MAIL_DEFAULT_SENDER"] = 'from@example.com'
-
 @app.route('/')
 def home():
     return "Hello Flask"
@@ -138,5 +126,5 @@ def delete_one_product(product_id):
 
 #######################################################
 #######################################################
-
-app.run(debug=True, port=5000)
+if __name__ == '__main__':
+    app.run(debug=True, port=5000, host="0.0.0.0")

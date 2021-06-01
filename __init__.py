@@ -25,6 +25,8 @@ URI = 'mongodb+srv://' + USER + ':' + PSWD + SERVER + '/' + DB + '?' + urlencode
 
 client = mongo.connect(host=URI)
 
+#################################################
+
 app = Flask(__name__, template_folder='template')
 
 app.config.update(dict(
@@ -39,6 +41,10 @@ app.config.update(dict(
     MAIL_USERNAME = str(EMAIL),
     MAIL_PASSWORD = str(PSWD_EMAIL)
 ))
+
+
+#################################################
+
 mail = Mail(app)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
