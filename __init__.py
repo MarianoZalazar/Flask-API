@@ -4,7 +4,7 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_mail import Mail
 from flask_bcrypt import Bcrypt
-from mongoengine import connect
+import mongoengine as mongo
 import settings.settings
 from os import environ
 from urllib.parse import urlencode
@@ -23,7 +23,7 @@ SERVER = environ['SERVER']
 DB = environ['DB']
 URI = 'mongodb+srv://' + USER + ':' + PSWD + SERVER + '/' + DB + '?' + urlencode(params)
 
-client = connect(host=URI)
+client = mongo.connect(host=URI)
 
 app = Flask(__name__, template_folder='template')
 
