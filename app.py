@@ -1,13 +1,18 @@
 from flask import Flask, request
 from mongoengine import ValidationError, NotUniqueError
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
+
 import misc.pswd_manager as pswd_manager
 import misc.email as email
 from misc.response import get_json
+
 from apiproject import EMAIL, PSWD_EMAIL, jwt, app
+
 from models.product import Product
-from messages.error_messages import error_message_helper
 from models.user import User
+
+from messages.error_messages import error_message_helper
+
 
 #200 Ok Get
 #201 Created Post
@@ -135,4 +140,4 @@ def delete_one_product(product_id):
 #######################################################
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000, host='0.0.0.0')
+    app.run(debug=True, port=5000)
