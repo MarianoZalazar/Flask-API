@@ -6,7 +6,7 @@ import misc.pswd_manager as pswd_manager
 import misc.email as email
 from misc.response import get_json
 
-from apiproject import EMAIL, PSWD_EMAIL, jwt, app
+from apiproject import EMAIL, PSWD_EMAIL, PORT, jwt, app
 
 from models.product import Product
 from models.user import User
@@ -127,4 +127,4 @@ def delete_one_product(product_id):
 #######################################################
 #######################################################
 if __name__ == '__main__':
-    app.run(debug=True, port=5000, host="0.0.0.0")
+    app.run(debug=True, port=PORT)

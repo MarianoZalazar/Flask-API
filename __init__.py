@@ -21,6 +21,7 @@ USER = environ['USER']
 PSWD = environ['PSWD']
 SERVER = environ['SERVER']
 DB = environ['DB']
+PORT = environ['PORT']
 URI = 'mongodb+srv://' + USER + ':' + PSWD + SERVER + '/' + DB + '?' + urlencode(params)
 
 client = mongo.connect(host=URI)
