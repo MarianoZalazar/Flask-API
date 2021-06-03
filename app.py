@@ -15,9 +15,12 @@ from messages.error_messages import error_message_helper
 
 @app.route('/')
 def home():
-    return "Hello Flask"
+    return ""
 
 #######################################################
+
+
+#User Routes
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -57,7 +60,6 @@ def confirm_email(token):
     user = User.get_by_email(user_email)
     if user.confirmed:
         response = get_json({'Ok': 'Account Confirmed, return to login'}, 200)
-        pass
     else:
         user.confirm_user()
         response = get_json({'Ok': 'Account Confirmed, return to login'}, 200)
@@ -65,6 +67,24 @@ def confirm_email(token):
 
 #######################################################
               
+@app.route('/users')
+def get_users():
+    return_value = User.get_all_users()
+    return get_json(return_value, 200)
+
+#######################################################
+
+@app.route('/users/<string:username>')
+def get_user_by_username(username):
+    return_value = User.get_by_username(username)
+    return get_json(return_value, 200)
+
+#######################################################
+
+
+
+#Products Routes
+
 @app.route('/products')
 def get_all_products():
     return_value = {"Products": Product.get()}
@@ -126,5 +146,6 @@ def delete_one_product(product_id):
 
 #######################################################
 #######################################################
+
 if __name__ == '__main__':
     app.run(debug=True, port=PORT)
