@@ -1,3 +1,4 @@
 .env
 apienv/
 .vscode/
+__pycache__/
