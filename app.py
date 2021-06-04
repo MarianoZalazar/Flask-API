@@ -1,6 +1,7 @@
 from flask import Flask, request
 from mongoengine import ValidationError, NotUniqueError
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
+import json
 
 import misc.pswd_manager as pswd_manager
 import misc.email as email
@@ -126,7 +127,7 @@ def add_one_product():
 def update_one_product(product_id):
     request_data = request.get_json()
     try:
-        Product.put(product_id, request_data['name'], request_data['price'], request_data.get('description', None), request_data['quantity'], get_jwt_identity())
+        Product.put(product_id, get_jwt_identity(), request_data)
         response = get_json('', 204)
     except ValidationError as exc:
         response = get_json(error_message_helper(exc.message), 400)

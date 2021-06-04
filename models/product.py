@@ -35,9 +35,9 @@ class Product(mongo.Document):
         return new_product.to_json()
     
     @staticmethod    
-    def put(req_id, req_name, req_price, req_description, req_quantity, req_owner):
-        product_to_update = Product.objects(product_id=req_id, owner_name=req_owner).first()
-        product_to_update.update(name=req_name, price=req_price, description=req_description, quantity=req_quantity, modified_at=datetime.datetime.utcnow())
+    def put(req_id, req_owner, req_data):
+        product_to_update = Product.objects(product_id = req_id, owner_name = req_owner).first()
+        product_to_update.update(**req_data, modified_at=datetime.datetime.utcnow())
     
     @staticmethod    
     def delete_product(req_id, req_owner):
