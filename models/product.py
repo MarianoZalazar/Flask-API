@@ -49,6 +49,9 @@ class Product(mongo.Document):
                           "name": self.name,
                           "price": self.price,
                           "quantity": self.quantity,
-                          "owner_name": self.owner_name
+                          "owner_name": self.owner_name,
+                          "description": self.description,
+                          "created_at": self.created_at,
+                          "modified_at": self.modified_at
                         }
         return json.dump(product_object)
